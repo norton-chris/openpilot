@@ -184,6 +184,17 @@ class Controls:
       else:
         self.events.add(EventName.calibrationInvalid)
 
+    # experimental blindspot notification
+    if(CS.leftBlindspot):
+        self.events.add(EventName.leftBlindspot)
+    if(CS.rightBlindspot):
+        self.events.add(EventName.rightBlindspot)
+    # blindspot notification when turn signal is active
+    if CS.leftBlindspot and CS.leftBlinker)
+        self.events.add(EventName.leftBlindspotBlinker)
+    if CS.rightBlindspot and CS.rightBlinker)
+        self.events.add(EventName.rightBlindspotBlinker)
+
     # Handle lane change
     if self.sm['pathPlan'].laneChangeState == LaneChangeState.preLaneChange:
       direction = self.sm['pathPlan'].laneChangeDirection

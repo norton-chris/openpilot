@@ -230,8 +230,8 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
 
   EventName.startupMaster: {
     ET.PERMANENT: Alert(
-      "WARNING: This branch is not tested",
-      "Always keep hands on wheel and eyes on road",
+      "WARNING: This branch is not fucking tested",
+      "Always keep your fucking hands on wheel and eyes on road",
       AlertStatus.userPrompt, AlertSize.mid,
       Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., 15.),
   },
@@ -430,14 +430,46 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   EventName.laneChangeBlocked: {
     ET.WARNING: Alert(
       "Car Detected in Blindspot",
-      "Monitor Other Vehicles",
+      "Pausing lane change",
       AlertStatus.normal, AlertSize.mid,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+  },
+
+  EventName.leftBlindspot: {
+    ET.WARNING: Alert(
+      "Car Detected in Blindspot",
+      "Don't change lanes",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+  },
+
+  EventName.rightBlindspot: {
+    ET.WARNING: Alert(
+      "Car Detected in Blindspot",
+      "Don't change lanes",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+  },
+
+  EventName.leftBlindspotBlinker: {
+    ET.WARNING: Alert(
+      "Car Detected in Blindspot",
+      "Don't change lanes",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+  },
+
+  EventName.rightBlindspotBlinker: {
+    ET.WARNING: Alert(
+      "Car Detected in Blindspot",
+      "Don't change lanes",
+      AlertStatus.normal, AlertSize.small,
       Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
   },
 
   EventName.laneChange: {
     ET.WARNING: Alert(
-      "Changing Lane",
+      "Changing Motherfucking Lanes",
       "Monitor Other Vehicles",
       AlertStatus.normal, AlertSize.mid,
       Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
@@ -445,18 +477,18 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
 
   EventName.steerSaturated: {
     ET.WARNING: Alert(
-      "TAKE CONTROL",
-      "Turn Exceeds Steering Limit",
+      "TAKE FUCKING CONTROL",
+      "Turn Exceeds the Fucking Steering Limit Idiot",
       AlertStatus.userPrompt, AlertSize.mid,
       Priority.LOW, VisualAlert.steerRequired, AudibleAlert.chimePrompt, 1., 1., 1.),
   },
 
   EventName.fanMalfunction: {
-    ET.PERMANENT: NormalPermanentAlert("Fan Malfunction", "Contact Support"),
+    ET.PERMANENT: NormalPermanentAlert("FUCK.. Fan Malfunction", "Contact Support"),
   },
 
   EventName.cameraMalfunction: {
-    ET.PERMANENT: NormalPermanentAlert("Camera Malfunction", "Contact Support"),
+    ET.PERMANENT: NormalPermanentAlert("FUCK.. Camera Malfunction", "Contact Support"),
   },
 
   # ********** events that affect controls state transitions **********
@@ -546,13 +578,13 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   },
 
   EventName.tooDistracted: {
-    ET.NO_ENTRY: NoEntryAlert("Distraction Level Too High"),
+    ET.NO_ENTRY: NoEntryAlert("Fucking Idiot Your Distraction Level Too High"),
   },
 
   EventName.overheat: {
     ET.PERMANENT: Alert(
       "System Overheated",
-      "",
+      "Fucking hot in here",
       AlertStatus.normal, AlertSize.small,
       Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., .2),
     ET.SOFT_DISABLE: SoftDisableAlert("System Overheated"),
@@ -687,6 +719,26 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, 0., 0., .2, creation_delay=0.5),
     ET.IMMEDIATE_DISABLE: ImmediateDisableAlert("Reverse Gear"),
     ET.NO_ENTRY: NoEntryAlert("Reverse Gear"),
+  },
+
+  EventName.neutralGear: {
+    ET.PERMANENT: Alert(
+      "Neutral\nGear",
+      "",
+      AlertStatus.normal, AlertSize.full,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, 0., 0., .2, creation_delay=0.5),
+    ET.IMMEDIATE_DISABLE: ImmediateDisableAlert("Neutral Gear"),
+    ET.NO_ENTRY: NoEntryAlert("Neutral Gear"),
+  },
+
+  EventName.parkGear: {
+    ET.PERMANENT: Alert(
+      "Park\nGear",
+      "",
+      AlertStatus.normal, AlertSize.full,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, 0., 0., .2, creation_delay=0.5),
+    ET.IMMEDIATE_DISABLE: ImmediateDisableAlert("Park Gear"),
+    ET.NO_ENTRY: NoEntryAlert("Park Gear"),
   },
 
   EventName.cruiseDisabled: {

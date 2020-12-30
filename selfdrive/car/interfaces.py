@@ -11,7 +11,7 @@ from selfdrive.controls.lib.drive_helpers import V_CRUISE_MAX
 
 GearShifter = car.CarState.GearShifter
 EventName = car.CarEvent.EventName
-MAX_CTRL_SPEED = (V_CRUISE_MAX + 4) * CV.KPH_TO_MS  # 144 + 4 = 92 mph
+MAX_CTRL_SPEED = (V_CRUISE_MAX + 10) * CV.KPH_TO_MS  # 144 + 10 = 95 mph
 
 # generic car and radar interfaces
 
@@ -96,6 +96,10 @@ class CarInterfaceBase():
       events.add(EventName.wrongGear)
     if cs_out.gearShifter == GearShifter.reverse:
       events.add(EventName.reverseGear)
+    if cs_out.gearShifter == GearShifter.neutral:
+      events.add(EventName.neutralGear)
+    if cs_out.gearShifter == GearShifter.park:
+      events.add(EventName.parkGear)
     if not cs_out.cruiseState.available:
       events.add(EventName.wrongCarMode)
     if cs_out.espDisabled:
