@@ -454,17 +454,17 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   EventName.leftBlindspotBlinker: {
     ET.WARNING: Alert(
       "Car Detected in Blindspot",
-      "Don't change lanes",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+      "Stay in lane",
+      AlertStatus.normal, AlertSize.full,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.chimeWarning1, .0, .1, .1),
   },
 
   EventName.rightBlindspotBlinker: {
     ET.WARNING: Alert(
       "Car Detected in Blindspot",
-      "Don't change lanes",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.none, .0, .1, .1),
+      "Stay in lane",
+      AlertStatus.normal, AlertSize.full,
+      Priority.LOW, VisualAlert.steerRequired, AudibleAlert.chimeWarning1, .0, .1, .1),
   },
 
   EventName.laneChange: {
