@@ -17,9 +17,9 @@ EventName = car.CarEvent.EventName
 _AWARENESS_TIME = 35.  # passive wheel touch total timeout
 _AWARENESS_PRE_TIME_TILL_TERMINAL = 7.
 _AWARENESS_PROMPT_TIME_TILL_TERMINAL = 5.
-_DISTRACTED_TIME = 11.
-_DISTRACTED_PRE_TIME_TILL_TERMINAL = 8.
-_DISTRACTED_PROMPT_TIME_TILL_TERMINAL = 6.
+_DISTRACTED_TIME = 20. # default: 11
+_DISTRACTED_PRE_TIME_TILL_TERMINAL = 15. # default: 8
+_DISTRACTED_PROMPT_TIME_TILL_TERMINAL = 10. # default: 6
 
 _FACE_THRESHOLD = 0.6
 _EYE_THRESHOLD = 0.6
@@ -37,7 +37,7 @@ _PITCH_NATURAL_OFFSET = 0.02  # people don't seem to look straight when they dri
 _YAW_NATURAL_OFFSET = 0.08  # people don't seem to look straight when they drive relaxed, rather a bit to the right (center of car)
 
 _HI_STD_TIMEOUT = 5
-_HI_STD_FALLBACK_TIME = 10  # fall back to wheel touch if model is uncertain for a long time
+_HI_STD_FALLBACK_TIME = 20  # fall back to wheel touch if model is uncertain for a long time (default: 10)
 _DISTRACTED_FILTER_TS = 0.25  # 0.6Hz
 
 _POSE_CALIB_MIN_SPEED = 13  # 30 mph
@@ -47,8 +47,8 @@ _POSE_OFFSET_MAX_COUNT = 3600  # stop deweighting new data after 6 min, aka "sho
 _RECOVERY_FACTOR_MAX = 5.  # relative to minus step change
 _RECOVERY_FACTOR_MIN = 1.25  # relative to minus step change
 
-MAX_TERMINAL_ALERTS = 3  # not allowed to engage after 3 terminal alerts
-MAX_TERMINAL_DURATION = 300  # 30s
+MAX_TERMINAL_ALERTS = 4  # not allowed to engage after 3 terminal alerts
+MAX_TERMINAL_DURATION = 350  # 30s
 
 # model output refers to center of cropped image, so need to apply the x displacement offset
 RESIZED_FOCAL = 320.0

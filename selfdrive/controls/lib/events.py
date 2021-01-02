@@ -314,7 +314,7 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   EventName.gasPressed: {
     ET.PRE_ENABLE: Alert(
       "openpilot will not brake while gas pressed",
-      "",
+      "take your foot off the break",
       AlertStatus.normal, AlertSize.small,
       Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .0, .0, .1, creation_delay=1.),
   },
@@ -484,11 +484,11 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   },
 
   EventName.fanMalfunction: {
-    ET.PERMANENT: NormalPermanentAlert("FUCK.. Fan Malfunction", "Contact Support"),
+    ET.PERMANENT: NormalPermanentAlert("Fan Malfunction", "Contact Support"),
   },
 
   EventName.cameraMalfunction: {
-    ET.PERMANENT: NormalPermanentAlert("FUCK.. Camera Malfunction", "Contact Support"),
+    ET.PERMANENT: NormalPermanentAlert("Camera Malfunction", "Contact Support"),
   },
 
   # ********** events that affect controls state transitions **********
@@ -584,7 +584,7 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
   EventName.overheat: {
     ET.PERMANENT: Alert(
       "System Overheated",
-      "Fucking hot in here",
+      "",
       AlertStatus.normal, AlertSize.small,
       Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., .2),
     ET.SOFT_DISABLE: SoftDisableAlert("System Overheated"),

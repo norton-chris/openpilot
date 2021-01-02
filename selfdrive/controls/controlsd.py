@@ -190,9 +190,9 @@ class Controls:
     if(CS.rightBlindspot):
         self.events.add(EventName.rightBlindspot)
     # blindspot notification when turn signal is active
-    if CS.leftBlindspot and CS.leftBlinker)
+    if(CS.leftBlindspot and CS.leftBlinker)
         self.events.add(EventName.leftBlindspotBlinker)
-    if CS.rightBlindspot and CS.rightBlinker)
+    if(CS.rightBlindspot and CS.rightBlinker)
         self.events.add(EventName.rightBlindspotBlinker)
 
     # Handle lane change
