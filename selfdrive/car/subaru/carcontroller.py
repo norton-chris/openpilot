@@ -11,6 +11,7 @@ class CarController():
     self.es_lkas_cnt = -1
     self.cruise_button_prev = 0
     self.steer_rate_limited = False
+    self.sng_active = False
 
     self.p = CarControllerParams(CP)
     self.packer = CANPacker(DBC[CP.carFingerprint]['pt'])
@@ -52,11 +53,21 @@ class CarController():
         # turn main on if off and past start-up state
         elif not CS.out.cruiseState.available and CS.ready:
           cruise_button = 1
+        elif self.sng_active and not CS.out.standstill and CS.out.vEgo > 0.5:
+          # Car stopped, now moving - re-engage cruise
+          cruise_button = 2  # set shallow
+          self.sng_active = False
         else:
           cruise_button = CS.cruise_button
 
+        # Track stop-and-go state
+        if c.active and CS.out.standstill and CS.out.cruiseState.available and not CS.out.cruiseState.enabled:
+          self.sng_active = True
+        elif not c.active:
+          self.sng_active = False
+
         # unstick previous mocked button press
-        if cruise_button == 1 and self.cruise_button_prev == 1:
+        if cruise_button != 0 and self.cruise_button_prev == cruise_button:
           cruise_button = 0
         self.cruise_button_prev = cruise_button
 
