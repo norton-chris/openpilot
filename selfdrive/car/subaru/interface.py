@@ -14,7 +14,7 @@ class CarInterface(CarInterfaceBase):
     ret.radarOffCan = True
 
     if candidate in PREGLOBAL_CARS:
-      ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaruLegacy)]
+      ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaru)]
       ret.enableBsm = 0x25c in fingerprint[0]
     else:
       ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.subaru)]
