@@ -77,6 +77,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.01, 0.05, 0.2], [0.003, 0.018, 0.025]]
 
     if candidate == CAR.LEGACY_PREGLOBAL:
+      ret.unsafeMode = 1  # allow ES_Distance (0x161) TX past subaru safety allowlist
       ret.mass = 1568 + STD_CARGO_KG
       ret.wheelbase = 2.67
       ret.centerToFront = ret.wheelbase * 0.5
